@@ -1,0 +1,181 @@
+<app-navbar></app-navbar>
+<div class="image">
+  <div class="top">
+      <section class="table top">
+          <div class="rnd-corner">
+              <div class="container  ">
+                      <div>
+                          <button type="button" class="btn btn-md btn-info badge-pill" 
+                          data-toggle="modal" data-target="#addPatient" >New patient</button>
+                      </div>
+                   <table class="custab text-center table-responsive">
+                      <thead>
+                          <tr>
+                              <th>Name user</th>
+                              <th>BirthDate</th>
+                              <th>Gender</th>
+                              <th>Adress</th>
+                              <th>Medical record</th>
+                              <th>Edit</th>
+                              <th>Delete</th>
+                              <th>Medication Plan</th>
+                             
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor='let data of patients'>
+                              <td>{{data.nameUser}}</td>
+                              <td>{{data.birth_date}}</td>
+                              <td>{{data.gender}}</td>
+                              <td>{{data.adress}}</td>
+                              <td>{{data.medical_record}}</td>
+                              <td><button type="button" (click)="getId(data.id)"    data-toggle="modal" data-target="#editPatient" class="btn btn-success">Edit</button></td>
+                              <td><button type="button" (click)="deletePatient(data.id)"  class="btn btn-danger">Delete</button></td>
+                              <td *ngIf="data.medicationPlan!=null"><button type="button"  (click)="viewInfo(data.medicationPlan.id)" class="btn btn-warning "  data-toggle="modal" data-target="#infoMedicationPlan"  >View medication plan</button></td>
+  
+                          </tr>
+                      </tbody>
+                  </table> 
+              </div>
+          </div>
+      </section> 
+  </div>
+  </div>
+  
+  <!-- MODAL MEDICAL RECOD DATA -->
+  <div *ngIf="view" class="modal fade" id="infoMedicationPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">View medication plan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                 <div class="form-group">
+                      <label>Interval aplicare:</label>
+                      <label>{{patientsMedicationPlan.interval}}</label>
+                  </div> 
+                  <div class="form-group">
+                      <label>Numar zile:</label>
+                      <label>{{patientsMedicationPlan.numarZile}}</label>
+                  </div> 
+                   <div class="form-group">
+                      <label>Date lista medicamente:</label>
+                      <div class="form-group" *ngFor="let data of lista">
+                          <label>Name:{{data.name}}</label><br/>
+                         <label>Side effect:{{data.sideEffects}}</label><br/>
+                           <label>Dosage:{{data.dosage}}</label><br/>
+                       </div>
+                    </div> 
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+          </div> 
+        </div>
+      </div>
+    </div>
+  
+  <!-- NEW PATIENT -->
+    <div class="modal fade" id="addPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add new patient</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" formControlName="username" class="form-control"  placeholder="Enter username">
+                  </div>
+                  <div class="form-group">
+                      <label >Password</label>
+                      <input type="password"  class="form-control"  formControlName="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group"> 
+                      <label >Name user</label>
+                      <input type="text"  class="form-control"  formControlName="nameUser" placeholder="Enter the full name ">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >BirthDate</label>
+                      <input type="text"  class="form-control"  formControlName="birth_date" placeholder="BirthDate format:yyyy-MM-dd">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Gender</label>
+                      <input type="text"  class="form-control"  formControlName="gender" placeholder="Enter gender">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Adress</label>
+                      <input type="text"  class="form-control"  formControlName="adress" placeholder="Enter adress">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Medical record</label>
+                      <input type="text"  class="form-control"  formControlName="medical_record" placeholder="Enter medical record">
+                    </div> 
+                  <button   type="submit"  class="btn btn-primary">Submit</button>
+                </form>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+          </div> 
+        </div>
+      </div>
+    </div>
+  
+  <!--   EDIT DATA -->
+  
+    <div class="modal fade" id="editPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit patient</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit(editForm.value)">
+ <!--                <div class="form-group"> 
+                  <label >Username</label>
+                  <input type="text"  class="form-control"  formControlName="username" placeholder="Enter username ">
+                </div> 
+                <div class="form-group"> 
+                  <label >Password</label>
+                  <input type="password"  class="form-control"  formControlName="password" placeholder="Enter mew password ">
+                </div>  -->
+                    <div class="form-group"> 
+                      <label >Name user</label>
+                      <input type="text"  class="form-control"  formControlName="nameUser" placeholder="Enter mew full name ">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >BirthDate</label>
+                      <input type="text"  class="form-control"  formControlName="birth_date" placeholder="New BirthDate format:yyyy-MM-dd">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Gender</label>
+                      <input type="text"  class="form-control"  formControlName="gender" placeholder="Enter new gender">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Adress</label>
+                      <input type="text"  class="form-control"  formControlName="adress" placeholder="Enter new adress">
+                    </div> 
+                    <div class="form-group"> 
+                      <label >Medical record</label>
+                      <input type="text"  class="form-control"  formControlName="medical_record" placeholder="Enter new medical record">
+                    </div> 
+                  <button   type="submit"  class="btn btn-primary">Submit</button>
+                </form>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    

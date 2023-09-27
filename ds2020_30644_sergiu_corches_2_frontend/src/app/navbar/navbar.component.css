@@ -1,0 +1,260 @@
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.container-login100 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px 10px;
+
+  position: relative;
+  z-index: 1;  
+}
+
+
+  .left-buttons{
+    bottom: 90%;
+    right: 100px;
+    display: flex;
+    position: absolute;
+  }
+  
+  .container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .login100-form-btn {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: white;
+    line-height: 1.2;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 120px;
+    height: 50px;
+    border-radius: 25px;
+  
+    
+    background: -webkit-linear-gradient(bottom, #88888b, #4d434c);
+    background: -o-linear-gradient(bottom, #88888b, #4d434c);
+    background: -moz-linear-gradient(bottom, #88888b, #4d434c);
+    background: linear-gradient(bottom, #88888b, #4d434c);
+    position: relative;
+    z-index: 1;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .login100-form-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background:none;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .login100-form-btn:hover {
+    color:#88888b;
+  }
+
+  .main-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .description-div{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    max-width: 50%;
+    height: 100%;
+  }
+
+  .description-div p{
+    color: white;
+    width: 60%;
+    margin: auto;
+  }
+  
+  .login100-form-btn:hover:before {
+    opacity: 0;
+  }
+
+  
+  @media (max-width: 576px) {
+    .wrap-login100 {
+      padding: 55px 15px 37px 15px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .alert-validate::before {
+      visibility: visible;
+      opacity: 1;
+    }
+    .description-div{
+      width: 100%;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .description-div p{
+      width: 100%;
+    }
+
+    .container-login100::before{
+      height: 0;
+    }
+    .container-login100{
+      width: 100%;
+    }
+
+    .main-wrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .left-buttons{
+      flex-direction: column;
+      bottom: 0;
+    }
+
+   .container-login100{
+     max-height: 0;
+
+   }
+    
+  }
+  
+  
+  
+  .wrap-login100 {
+    
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 55px 55px 37px 55px;
+    display: flex;
+    flex-direction: column
+    
+  }  
+
+.nav-bar{
+  position: fixed;
+  background:  rgba(39,49,65);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 5;
+  top: 0;
+}
+
+.nav-left-btns{
+  display: flex;
+}
+
+.nav-options{
+  display: flex;
+  align-self: stretch;
+  margin-right:10px;
+}
+
+.nav-options a{
+  color: #fff;
+  padding: 0 20px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-left: 1px solid rgba(80, 80, 80, 0.8);
+}
+
+.nav-options a:hover{
+  background:rgba(30,30,30,0.6);
+}
+
+.nav-toggle{
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 10px;
+  margin-right: 10px; 
+}
+
+.nav-bar-small .nav-options{
+  position: absolute;
+  right: 0;
+  top: 100%;
+  flex-direction: column;
+  background: rgba(10,10,10,0.9);
+  align-items: flex-end;
+  max-width: 100vw;
+  flex: 1;
+}
+
+.nav-bar-small .nav-options a{
+  width: 100%;
+  justify-content: flex-end;
+  padding: 5px 10px;
+  border-left: 0;
+}
+
+
+@media(max-width:600px){
+  .nav-options a{
+    border-bottom: 1px solid #5d5c5c;
+  }
+
+}
+.topp{
+    padding-top: 16%;
+}

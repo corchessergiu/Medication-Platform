@@ -1,0 +1,23 @@
+<div class="nav-bar">
+    <div class="container-login100">
+
+          <ng-container *ngIf="isLoggedIn() && doctor" >
+            <button class="login100-form-btn" (click)="crudOnPatient()" >Crud patient</button>
+            <button class="login100-form-btn"  (click)="crudOnCaregiver()">Crud caregiver</button>
+            <button class="login100-form-btn"  (click)="crudOnMedication()">Crud medication</button>
+            <button class="login100-form-btn" (click)="addMedicationPlan()">Create medication plan</button>
+          </ng-container>
+           <ng-container *ngIf="!isLoggedIn()" >
+            <button class="login100-form-btn" (click)="toLogin()">Login</button>
+          </ng-container>
+          <ng-container *ngIf="isLoggedIn()" >
+            <button class="login100-form-btn" (click)="logout()">Logout</button>
+          </ng-container>
+
+      
+         
+</div>
+<ng-container *ngIf="!isLoggedIn()" >
+    <button class="login100-form-btn home-button" (click)="goHome()">HOME</button>
+  </ng-container>
+</div>

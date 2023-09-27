@@ -1,0 +1,23 @@
+.top{
+    padding-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    background-image:url('src/assets/images/patient.jpg');
+    min-height: 100%;
+}
+
+label{
+    color:black
+}
+
+th{
+    color:black;
+}
+td{
+    color:black;
+    font-weight: bold;
+}

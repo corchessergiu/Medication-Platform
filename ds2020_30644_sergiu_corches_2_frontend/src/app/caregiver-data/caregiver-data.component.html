@@ -1,0 +1,30 @@
+<div class="image">
+     <section class="table top">
+        <div class="rnd-corner">
+            <div class="container  ">
+                 <table class="custab text-center table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Name user</th>
+                            <th>BirthDate</th>
+                            <th>Gender</th>
+                            <th>Adress</th>
+                            <th>Medical record</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let data of patients'>
+                            <td>{{data.nameUser}}</td>
+                            <td>{{data.birth_date}}</td>
+                            <td>{{data.gender}}</td>
+                            <td>{{data.adress}}</td>
+                            <td>{{data.medical_record}}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+      </section> 
+      <div class='message'>
+      </div>
+    </div>

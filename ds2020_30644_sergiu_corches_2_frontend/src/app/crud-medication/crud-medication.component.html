@@ -1,0 +1,115 @@
+
+<app-navbar></app-navbar>
+ <!-- Modal ADD-->
+  <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new medication</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" formControlName="name" class="form-control"  placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label >Side effects</label>
+                    <input type="text"  class="form-control"  formControlName="sideEffects" placeholder="Enter side effects">
+                  </div>
+                  <div class="form-group"> 
+                    <label >Dosage</label>
+                    <input type="number"  class="form-control"  formControlName="dosage" placeholder="Enter dosage">
+                  </div> 
+                <button   type="submit"  class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        </div> 
+      </div>
+    </div>
+  </div>
+
+
+ <!-- Modal EDIT-->
+ <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="Edit" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Edit">Edit medication</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit(editForm.value)">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="name" class="form-control"  placeholder="Enter new name">
+              </div>
+              <div class="form-group">
+                  <label >Side effects</label>
+                  <input type="text"  class="form-control"  formControlName="sideEffects" placeholder="Enter new side effects">
+                </div>
+                <div class="form-group"> 
+                  <label >Dosage</label>
+                  <input type="number"  class="form-control"  formControlName="dosage" placeholder="Enter new dosage">
+                </div> 
+              <button   type="submit"  class="btn btn-primary">Submit</button>
+            </form>
+      </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="image">
+<section class="table top">
+    <div class="rnd-corner">
+        <div class="container  ">
+                <div>
+                    <button type="button" class="btn btn-md btn-info badge-pill" 
+                    data-toggle="modal" data-target="#add" >New medication</button>
+                </div>
+             <table class="custab text-center table-responsive">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Side Effects</th>
+                        <th>Dosage</th>
+                        <th>Delete Item</th>
+                        <th>Edit Item</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let data of medications'>
+                        <td>{{data.name}}</td>
+                        <td>{{data.sideEffects}}</td>
+                        <td>{{data.dosage}}</td>
+                        <td><button type="button" class="btn btn-danger " (click)="deleteFieldValue(data.id)" >Delete</button></td>
+                        <td> <button type="button" 
+                          (click)="getId(data.id)"  class="btn btn-success" data-target="#Edit" data-toggle="modal">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</section> 
+</div>
+
+<div class="error-bar" *ngIf="errorDelete" >
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Error!</h4>
+  <button type="button" class="button-position btn btn-danger" (click)="alertDelete()">X</button>
+  <p>Acest medicament este utilizat intr-un medical record!!!</p>
+  <hr>
+  <p class="mb-0">Incercati sa stergeti alt medicament</p>
+ 
+</div>
+</div>

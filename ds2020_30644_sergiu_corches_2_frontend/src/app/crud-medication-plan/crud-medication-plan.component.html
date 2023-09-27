@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div  class="image ">
+    <section class="table top">
+        <div class="rnd-corner">
+            <div class="container  ">
+                 <table class="custab text-center table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Name user</th>
+                            <th>BirthDate</th>
+                            <th>Gender</th>
+                            <th>Adress</th>
+                            <th>Medical record</th>
+                            <th>Select patient</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let data of patients'>
+                            <td>{{data.nameUser}}</td>
+                            <td>{{data.birth_date}}</td>
+                            <td>{{data.gender}}</td>
+                            <td>{{data.adress}}</td>
+                            <td>{{data.medical_record}}</td>
+                            <td><input type="checkbox" value="{{data.id}}" (change)="selectionPatient($event.srcElement)"></td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+    </section> 
+
+<section class="table top">
+    <div class="rnd-corner">
+        <div class="container  ">
+             <table class="custab text-center table-responsive">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Side effects</th>
+                        <th>Dosage</th>
+                        <th>Adress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let data of medications'>
+                        <td>{{data.name}}</td>
+                        <td>{{data.sideEffects}}</td>
+                        <td>{{data.dosage}}</td>
+                        <td><input type="checkbox" value="{{data.id}}" (change)="selectionChangeMedication($event.srcElement)"></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</section> 
+</div>
+<div class="top-table">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
+        <div class="form-group">
+          <label>Numar zile</label>
+          <input type="number" formControlName="numarZile" class="form-control"  placeholder="Enter number of day">
+        </div>
+        <div class="form-group">
+            <label >Interval</label>
+            <input type="text"  class="form-control"  formControlName="interval" placeholder="Enter interval">
+          </div>
+        <button   type="submit"  class="btn btn-primary">Submit</button>
+      </form>
+</div>
+

@@ -1,0 +1,24 @@
+.top{
+    padding-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    background-image:url('src/assets/images/pill2.jpg');
+    min-height: 100%;
+}
+
+.error-bar{
+    position: absolute;
+    top: 12%;
+    z-index: 1;
+    width: 500px;
+    left:31%;
+}
+.button-position{
+    right: 5%;
+    position: absolute;
+    top:0%
+}

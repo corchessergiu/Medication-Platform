@@ -1,0 +1,17 @@
+.top{
+    padding-top: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topMedical{
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.large{
+    min-width: 350px;
+}
